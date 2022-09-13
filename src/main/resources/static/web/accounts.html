@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Your accounts - FineLine</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app">
+            <header class="app-header">
+                <div class="app-header-logo">
+                    <a href="./index.html">
+                        <img src="./assets/img/logo1.png" alt="logo" class="logoMain">
+                    </a>
+                </div>
+                <nav class="app-header-navigation navbar navbar-expand-lg navbar p-0 ">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="tabs navbar-nav mx-lg-auto">
+                            <a class="nav-item nav-link active" href="#" aria-current="page">Accounts</a>
+                            <a class="nav-item nav-link" href="./card.html">Cards</a>
+                            <a class="nav-item nav-link" href="./loan-application.html">Loans</a>
+                            <a class="nav-item nav-link" href="./transfer.html">Transfer</a>
+                            <a class="nav-item nav-link" href="./payments.html">Payments</a>
+                        </div>
+                        <button class="user-profile">
+                            <span>{{client.firstName}} {{client.lastName}}</span>
+                            <span class="avatar1">
+                                {{initialFirstName}}{{initialLastname}}
+                            </span>
+                        </button>
+                        <button @click="logout()" class="icon-button logout large mx-3">
+                            <img src="./assets/img/turn-off.png" alt="log out">
+                        </button>
+                    </div>
+                </nav>
+            </header>
+            <div class="app-body">
+                <div class="app-body-navigation">
+                    <nav class="navigation">
+                        <a href="./about-us.html">About us</a>
+                        <a href="./price.html">Price</a>
+                        <a href="./segurity.html">Security</a>
+                    </nav>
+                    <footer class="footer">
+                        <h1>FineLine</h1>
+                        <div>
+                            <h6>2022 © Alexis Delgado</h6>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </footer>
+                </div>
+                <div class="app-body-main-content">
+                    <section class="main-section">
+                        <div class="main-section d-flex justify-content-between accountTitleBtn">
+                            <h2>Your Accounts:</h2>
+                            <div class=" btnAccount">
+                                <button v-if="activeAccounts.length < 3" type="button" class="botonVioleta1 mx-2"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                    Add an account
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header ">
+                                                <h5 class="modal-title fw-bolder" id="exampleModalLabel">Get a new account</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6 class="">Choose the account type:</h6>
+                                                <select v-model="accountTypeChoosed">
+                                                    <option value="CURRENT">CURRENT</option>
+                                                    <option value="SAVING">SAVING</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="botonDissable"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="botonVioleta1"
+                                                    @click="createAccount()">Add account</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="botonVioleta1 mx-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Deleted a account
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fw-bolder" id="exampleModalLabel">Deleted an account</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6 class="">Choose the account you want to deleted:</h6>
+                                                <form action="">
+                                                    <select v-model="accountNumber">
+                                                        <option :value="account.number"
+                                                            v-for="account in activeAccounts">
+                                                            {{account.number}} - {{account.accountType}}</option>
+                                                    </select>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="botonDissable"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="botonVioleta1"
+                                                    @click="deletedAccount()">Deleted a account</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tiles">
+                            <article class="tile" v-for="account in activeAccounts">
+                                <div class="tile-header d-flex flex-column align-items-start">
+                                    <h3>Account: {{account.number}}</h3>
+                                    <h3>{{account.accountType}}</h3>
+                                    <h3>Balance: ${{account.balance.toLocaleString('es-MX')}}</h3>
+                                    <p class="text-muted ms-2">Creation date: {{account.creationDate}}</p>
+                                </div>
+                                <a :href="'./account.html?id='+account.id">
+                                    <span>Go to transactions</span>
+                                    <span class="icon-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </article>
+                        </div>
+                        <article class="tile" v-show="activeAccounts.length==0">
+                            <div class="tile-header d-flex flex-column align-items-start">
+                                <h3>You dont have any account yet.</h3>
+                            </div>
+                        </article>
+                    </section>
+                    <section class="loans-section">
+                        <div class="loans-section-header">
+                            <h2>Your Loans</h2>
+                        </div>
+                        <table class="container-fluid table-responsive mt-3" v-if="loans.length != 0">
+                            <thead>
+                                <tr>
+                                    <th class="imgTable"></th>
+                                    <th rowspan="4">Name</th>
+                                    <th scope="col-4">Amount to pay</th>
+                                    <th scope="col-4">Payments</th>
+                                    <th>Pay per fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="loan in loans">
+                                    <td class="align-self-center imgTable">
+                                        <img v-if="loan.loanName == 'Mortgage'" width="35"
+                                            src="./assets/img/mortgage.png" alt="Mortgage" srcset="">
+                                        <img v-else-if="loan.loanName == 'Personal'" width="35"
+                                            src="./assets/img/personal.png" alt="personal loan">
+                                        <img v-else width="35" src="./assets/img/car.png" alt="car loan">
+                                    </td>
+                                    <td>{{loan.loanName}}</td>
+                                    <td>$ {{loan.amount.toLocaleString('es-MX')}}</td>
+                                    <td>{{loan.payments}}</td>
+                                    <td>${{(loan.amount / loan.payments).toFixed(0)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <article class="tile my-3" v-show="loans.length == 0">
+                            <div class="tile-header d-flex flex-column align-items-start">
+                                <h3>You dont have any account yet.</h3>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./accounts.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

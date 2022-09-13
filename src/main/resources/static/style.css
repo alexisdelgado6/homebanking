@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.logo{
+    width: 14rem;
+}
+
+.enlaceNav{
+    text-decoration: none;
+    color: #614ad9;
+    padding: 0.8rem;
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.enlaceNav:hover{
+    color: #624ad9b5;
+}
+
+.login {
+    background-color: #624ad926;
+    border-radius: 10px;
+}
+
+.login:hover{
+    color: white;
+    background-color: #614ad9;
+}
+
+.botones{
+    background-color: #614ad9 !important;
+    color: white !important;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+    <title>Your cards - FineLine</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app">
+            <header class="app-header">
+                <div class="app-header-logo">
+                    <a href="./index.html">
+                        <img src="./assets/img/logo1.png" alt="logo" class="logoMain">
+                    </a>
+                </div>
+                <nav class="app-header-navigation navbar navbar-expand-lg navbar p-0 ">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="tabs navbar-nav mx-lg-auto">
+                            <a class="nav-item nav-link" href="./accounts.html" aria-current="page">Accounts</a>
+                            <a class="nav-item nav-link active" href="#">Cards</a>
+                            <a class="nav-item nav-link" href="./loan-application.html">Loans</a>
+                            <a class="nav-item nav-link" href="./transfer.html">Transfer</a>
+                            <a class="nav-item nav-link" href="./payments.html">Payments</a>
+                        </div>
+                        <button class="user-profile">
+                            <span>{{clients.firstName}} {{clients.lastName}}</span>
+                            <span class="avatar1">
+                                {{initialFirstName}}{{initialLastname}}
+                            </span>
+                        </button>
+                        <button @click="logout()" class="icon-button logout large mx-3">
+                            <img src="./assets/img/turn-off.png" alt="log out">
+                        </button>
+                    </div>
+                </nav>
+            </header>
+            <div class="app-body">
+                <div class="app-body-navigation">
+                    <nav class="navigation">
+                        <a href="./about-us.html">About us</a>
+                        <a href="./price.html">Price</a>
+                        <a href="./segurity.html">Security</a>
+                    </nav>
+                    <footer class="footer">
+                        <h1>FineLine</h1>
+                        <div>
+                            <h6>2022 © Alexis Delgado</h6>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </footer>
+                </div>
+                <div class="app-body-main-content">
+                    <section class="main-section">
+                        <div class="tarjets tilesCard">
+                            <div v-if="creditCard.length != 0">
+                                <h3>Yor credit cards:</h3>
+                                <div class="card d-flex flex-column" v-for="card in creditCard">
+                                    <div class="flip">
+                                        <div class="front" :class="card.cardType == 'DEBIT' ? 'debit' : 'credit'">
+                                            <div class="strip-bottom"
+                                                :class="card.cardColor == 'GOLD' ? 'strip-bottom-gold' : card.cardColor == 'SILVER' ? 'strip-bottom-silver' : 'strip-bottom-titanium'">
+                                            </div>
+                                            <div class="strip-top"></div>
+                                            <img class="logoCard" width="60" height="60"
+                                                src="./assets/img/logocard1.png" alt="logo banco">
+                                            <div class="investor text-light">
+                                                <h3 class="cardType" class="text-light">{{card.cardType}}</h3>
+                                            </div>
+                                            <h2 class="text-center text-shadow cardColor"
+                                                :style="card.cardColor == 'GOLD' ? 'color: rgb(254, 212, 116);' : card.cardColor == 'SILVER' ? 'color: #8c8b92db;' : 'color: #37343b; text-shadow: 3px 2px white;' ">
+                                                {{card.cardColor}}</h2>
+                                            <div class="chip">
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-main"></div>
+                                            </div>
+                                            <svg class="wave" viewBox="0 3.71 26.959 38.787" width="26.959"
+                                                height="38.787" fill="white">
+                                                <path
+                                                    d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z">
+                                                </path>
+                                                <path
+                                                    d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z">
+                                                </path>
+                                                <path
+                                                    d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z">
+                                                </path>
+                                            </svg>
+                                            <div class="card-number">
+                                                <div class="section" class="text-light">{{card.cardNumber}}</div>
+                                            </div>
+                                            <div class="end" class="text-light"><span class="end-text"
+                                                    class="text-light">exp. end:</span>
+                                                    <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}} <span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow < newDate1(card.thruDate)">expired</span></span>
+                                            </div>
+                                            <div class="card-holder" class="text-light">{{card.cardHolder}}</div>
+                                            <div class="master">
+                                                <div class="circle master-red"></div>
+                                                <div class="circle master-yellow"></div>
+                                            </div>
+                                        </div>
+                                        <div class="back" :class="card.cardType == 'DEBIT' ? 'debit' : 'credit'">
+                                            <div class="strip-black"></div>
+                                            <div class="ccv">
+                                                <label class="text-light">ccv</label>
+                                                <div>{{card.cvv}}</div>
+                                            </div>
+                                            <div class="terms">
+                                                <p class="text-light">If this card is found, please return it to FL Bank
+                                                    S.A., 742 Evergreen Terrace, Springfield, United States of America.
+                                                    Call: (+1 408) 064-7789 or any branch of FL Bank S.A.. This card is
+                                                    non-transferable and for the exclusive use of the Card Holder whose
+                                                    signature appears above. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <article class="tile anyCard my-3" v-show="creditCard.length == 0">
+                                <div class="tile-header d-flex flex-column align-items-start">
+                                    <h3>You dont have any debit card yet.</h3>
+                                </div>
+                            </article>
+                            <div v-if="debitCard.length != 0">
+                                <h3>Yor debit cards:</h3>
+                                <div class="card" v-for="card in debitCard">
+                                    <div class="flip">
+                                        <div class="front" :class="card.cardType == 'DEBIT' ? 'debit' : 'credit'">
+                                            <div class="strip-bottom"
+                                                :class="card.cardColor == 'GOLD' ? 'strip-bottom-gold' : card.cardColor == 'SILVER' ? 'strip-bottom-silver' : 'strip-bottom-titanium'">
+                                            </div>
+                                            <div class="strip-top"></div>
+                                            <img class="logoCard" width="60" height="60"
+                                                src="./assets/img/logocard1.png" alt="logo banco">
+                                            <div class="investor text-light">
+                                                <h3 class="cardType" class="text-light">{{card.cardType}}</h3>
+                                            </div>
+                                            <h2 class="text-center text-shadow cardColor"
+                                                :style="card.cardColor == 'GOLD' ? 'color: rgb(254, 212, 116);' : card.cardColor == 'SILVER' ? 'color: #8c8b92db;' : 'color: #37343b; text-shadow: 3px 2px white;' ">
+                                                {{card.cardColor}}</h2>
+                                            <div class="chip">
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-line"></div>
+                                                <div class="chip-main"></div>
+                                            </div>
+                                            <svg class="wave" viewBox="0 3.71 26.959 38.787" width="26.959"
+                                                height="38.787" fill="white">
+                                                <path
+                                                    d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z">
+                                                </path>
+                                                <path
+                                                    d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z">
+                                                </path>
+                                                <path
+                                                    d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z">
+                                                </path>
+                                            </svg>
+                                            <div class="card-number">
+                                                <div class="section" class="text-light">{{card.cardNumber}}</div>
+                                            </div>
+                                            <div class="end" class="text-light"><span class="end-text"
+                                                    class="text-light">exp. end:</span>
+                                                <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}} <span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow > newDate1(card.thruDate)">expired</span></span>
+                                            </div>
+                                            <div class="card-holder" class="text-light">{{card.cardHolder}}</div>
+                                            <div class="master">
+                                                <div class="circle master-red"></div>
+                                                <div class="circle master-yellow"></div>
+                                            </div>
+                                        </div>
+                                        <div class="back" :class="card.cardType == 'DEBIT' ? 'debit' : 'credit'">
+                                            <div class="strip-black"></div>
+                                            <div class="ccv">
+                                                <label class="text-light">ccv</label>
+                                                <div>{{card.cvv}}</div>
+                                            </div>
+                                            <div class="terms">
+                                                <p class="text-light">If this card is found, please return it to FL Bank
+                                                    S.A., 742 Evergreen Terrace, Springfield, United States of America.
+                                                    Call: (+1 408) 064-7789 or any branch of FL Bank S.A.. This card is
+                                                    non-transferable and for the exclusive use of the Card Holder whose
+                                                    signature appears above. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <article class="tile anyCard my-3" v-show="debitCard.length == 0">
+                                <div class="tile-header d-flex flex-column align-items-start">
+                                    <h3>You dont have any debit card yet.</h3>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                            <div v-if="activeCards.length < 6" class="my-3">
+                                <a href="./create-cards.html"><button class="botonVioleta">Create new card</button></a>
+                            </div>
+                            <div v-if="activeCards.length != 0">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="botonVioleta" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Deleted a Card
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-light fw-bolder text-shadow" id="exampleModalLabel">Choose the card you want to deleted</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="" @submit.prevent="">
+                                                    <div class="d-flex flex-column align-items-start my-3" v-if="debitCard.length != 0">
+                                                        <label for="debitCards" class="fw-bold text-shadow">Your Debit cards:</label>
+                                                        <select v-model="cardNumber">
+                                                            <option :value="cards.cardNumber" v-for="cards in debitCard">{{cards.cardNumber}} - {{cards.cardColor}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-start my-3" v-if="creditCard.length != 0">
+                                                        <label for="creditCards" class="fw-bold text-shadow">Your Credit cards:</label>
+                                                        <select v-model="cardNumber">
+                                                            <option :value="cards.cardNumber" v-for="cards in creditCard">{{cards.cardNumber}}  - {{cards.cardColor}}</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="botonVioleta"
+                                                    @click="deletedCard">Deleted a card!</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <article v-if="activeCards.length == 0" class="tile my-4">
+                            <div class="tile-header d-flex flex-column align-items-start">
+                                <h3>You don't have any Card.</h3>
+                            </div>
+                        </article> -->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./card.js"></script>
+</body>
+
+</html>

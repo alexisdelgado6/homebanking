@@ -1,0 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+/*<----------------------- EMPIEZA EL NAV -------------------------> */
+
+.logo {
+    width: 14rem;
+}
+
+.enlaceNav {
+    text-decoration: none;
+    color: #614ad9;
+    padding: 0.8rem;
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.enlaceNav:hover {
+    color: #624ad9b5;
+}
+
+.login {
+    background-color: #624ad926;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.login:hover {
+    color: white;
+    background-color: #614ad9;
+    transition: 0.5s;
+}
+
+/*<----------------------- TERMINA EL NAV -------------------------> */
+
+/*<----------------------- EMPIEZA EL MAIN -------------------------> */
+
+.imgMain {
+    width: 40rem;
+    filter: drop-shadow(4px 4px 12px black)
+}
+
+.titulo {
+    font-size: 4rem;
+    color: #343348;
+    font-weight: 900;
+    margin-bottom: 2rem;
+}
+
+.typed{
+  color: #614ad9;
+}
+
+.subtitulo {
+    width: 83%;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.textoMain {
+    color: #6B7688 !important;
+}
+
+/* <-------------BENEFICIOS-----------------------> */
+
+.tituloSecundario {
+    color: #343348;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.tarjetaMain {
+    border-radius: 1.5rem;
+    color: #343348;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-left: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.tarjetaMain:hover {
+    background-color: #614ad9;
+    font-size: 0;
+}
+
+.tarjetaMain:hover::after {
+    content: attr(data-hover);
+    font-size: 1.8rem;
+    color: wheat;
+}
+
+
+.tarjetaMainChica {
+    border-radius: 1.5rem;
+    color: #343348;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.tarjetaMain img, .tarjetaMainChica img{
+  filter: drop-shadow(2px 4px 4px black)
+}
+
+.tarjetaMainChica:hover {
+    background-color: #614ad9;
+    font-size: 0;
+}
+
+.tarjetaMainChica:hover::after {
+    content: attr(data-hover);
+    font-size: 1.2rem;
+    color: wheat;
+}
+
+
+/* <-------------------------- TESTIMONIOS ------------------------------------> */
+
+.imgTestimonials{
+  width: 150px;
+  border-radius: 360px;
+}
+.cardTestimonials{
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  transition: 0.25s ease;
+}
+
+.cardTestimonials:hover {
+  transform: translateY(-5px);
+}
+
+
+/* <----------------------------------------- COST --------------------------------------> */
+.cost {
+  font-size: 10rem;
+  font-weight: 700;
+  color: #614ad9;
+}
+
+.costValue {
+  color: #624ad994;
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.tituloCost {
+  font-size: 4rem;
+  color: #343348;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.subtituloCost {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #6B7688;
+}
+
+.buttomCost {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #614ad9;
+  padding: 1.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  font-weight: 800;
+  background-color: #624ad926;
+  border-radius: 60px;
+  border: none;
+  transition: 0.5s;
+}
+
+.buttomCost:hover {
+  color: white;
+  background-color: #614ad9;
+  transition: 0.5s;
+}
+
+.boywithcard{
+  width: 50rem;
+  margin-bottom: 1.7rem;
+  border-radius: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+/* <------------------------------------------------- PRICE --------------------------------------> */
+
+.costos{
+  width: 100%;
+  background-color: #614ad9;
+  min-height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.costos h1 {
+  color: white;
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.priceText{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.priceText img{
+  width: 100px;
+}
+
+.priceTextIndividual{
+  transition: 0.25s ease;
+}
+
+.priceTextIndividual:hover{
+  transform: scale(1.05) translateY(-5px);
+}
+
+.priceP{
+  font-size: 0.9rem;
+  color: #6B7688;
+  font-family: inherit !important;
+}
+
+.priceTitle{
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.pricevalue{
+  color: #614ad9;
+  width: 250px;
+  font-weight: 500;
+  font-size: 2.2rem;
+}
+/* <------------------------------------------------------------ABOUT US ----------------------------------------------> */
+
+.aboutUsTittle{
+  font-size: 2.7rem;
+  color: #343348;
+  font-weight: 800;
+}
+
+.girlwithcard{
+  width: 700px;
+  border-radius: 30px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+
+/* <--------------F O O T E R ------------------------> */
+
+
+.bg-footer {
+    background-color: #33383c;
+    padding: 50px 0 30px;
+}
+
+.footer-heading {
+    letter-spacing: 2px;
+}
+
+.footer-link a {
+    color: #acacac;
+    line-height: 40px;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+.footer-link a:hover {
+    color: #614ad9;
+}
+
+.contact-info {
+    color: #acacac;
+    font-size: 14px;
+}
+
+.footer-social-icon {
+    font-size: 15px;
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    border-radius: 3px;
+    text-align: center;
+    display: inline-block;
+}
+
+.facebook {
+    background-color: #4e71a8;
+    color: #ffffff;
+}
+
+.twitter {
+    background-color: #55acee;
+    color: #ffffff;
+}
+
+.google {
+    background-color: #d6492f;
+    color: #ffffff;
+}
+
+.apple {
+    background-color: #424041;
+    color: #ffffff;
+}
+
+.footer-alt {
+    color: #acacac;
+}
+
+.footer-heading {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-heading:after {
+    content: "";
+    width: 25px;
+    border-bottom: 1px solid #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    border-bottom: 1px solid #614ad9;
+}
+
+.focus-in-expand {
+	-webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.botones{
+    background-color: #614ad9 !important;
+    color: white !important;
+}
+
+@media (max-width: 1200px){
+  .totalConection{
+    flex-direction: column;
+    align-items: center;
+  }
+  .textoMain{
+    text-align: center;
+  }
+  .imgMain{
+    width: 30rem;
+  }
+  .subtitulo {
+    width: 100%;
+  }
+/* --------------------------------------- */
+  .imgBeneficios{
+    width: 7rem;
+  }
+  .boywithcard{
+    width: 40rem;
+  }
+}
+
+@media (max-width: 768px){
+  .stores{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .stores img{
+    width: 200px;
+    margin-bottom: 10px;
+    margin-right: 0 !important;
+  }
+  .titulo{
+    font-size: 2.3rem;
+  }
+  .tituloCost{
+    font-size: 2.2rem;
+  }
+  .tarjetaMainChica img {
+    width: 60px;
+  }
+  .nav-item{
+    margin-top: 20px !important;
+  }
+  .costos h1{
+    font-size: 40px;
+  }
+  .costos{
+    min-height: 15rem;
+  }
+  .girlwithcard{
+    width: 450px;
+  }
+  .imgMain{
+    width: 20rem;
+  }
+  .boywithcard{
+    width: 25rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .tarjetaMain, .tarjetaMain:hover::after{
+    font-size: 20px;
+  }
+  .tituloCost , .tituloSecundario{
+    font-size: 1.5rem;
+  }
+  .subtituloCost{
+    font-size: 1.1rem;
+  }
+  .subtitulo{
+    font-size: 1rem;
+  }
+  .cost {
+    font-size: 7rem;
+  }
+  .costValue{
+    font-size: 5rem;
+  }
+  .buttomCost {
+    font-size: 1.2rem;
+    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .cardTestimonials h4{
+    font-size: 1.4rem;
+  }
+  .cardTestimonials h5{
+    font-size: 1.1rem;
+  }
+  .cardTestimonials p{
+    font-size: .9rem;
+  }
+  .logo{
+    width: 190px;
+  }
+  .costos h1{
+    font-size: 30px;
+  }
+  .pricevalue{
+    font-size: 16px;
+  }
+  .priceTextIndividual img{
+    width: 75px;
+  }
+  .priceP{
+    font-size: 0.7rem;
+  }
+  .priceTitle{
+    font-size: 0.9rem;
+  }
+  .girlwithcard{
+    width: 300px;
+  }
+  .boywithcard{
+    width: 20rem;
+  }
+  .stores img{
+    width: 100px;
+  }
+}
+
+@media (max-width: 350px){
+  .costos{
+    min-height: 12rem;
+  }
+  .girlwithcard{
+    width: 280px;
+  }
+  .boywithcard{
+    width: 17rem;
+  }
+}
+
+
+
+
+
