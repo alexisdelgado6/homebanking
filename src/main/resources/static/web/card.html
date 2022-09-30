@@ -76,7 +76,7 @@
                                     <div class="flip">
                                         <div class="front" :class="card.cardType == 'DEBIT' ? 'debit' : 'credit'">
                                             <div class="strip-bottom"
-                                                :class="card.cardColor == 'GOLD' ? 'strip-bottom-gold' : card.cardColor == 'SILVER' ? 'strip-bottom-silver' : 'strip-bottom-titanium'">
+                                                :class="'strip-bottom' [card.cardColor == 'GOLD' ? 'strip-bottom-gold' : card.cardColor == 'SILVER' ? 'strip-bottom-silver' : 'strip-bottom-titanium']">
                                             </div>
                                             <div class="strip-top"></div>
                                             <img class="logoCard" width="60" height="60"
@@ -111,7 +111,8 @@
                                             </div>
                                             <div class="end" class="text-light"><span class="end-text"
                                                     class="text-light">exp. end:</span>
-                                                    <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}} <span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow < newDate1(card.thruDate)">expired</span></span>
+                                                    <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}} 
+                                                        <!--<span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow < newDate1(card.thruDate)">expired</span></span> -->
                                             </div>
                                             <div class="card-holder" class="text-light">{{card.cardHolder}}</div>
                                             <div class="master">
@@ -182,7 +183,8 @@
                                             </div>
                                             <div class="end" class="text-light"><span class="end-text"
                                                     class="text-light">exp. end:</span>
-                                                <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}} <span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow > newDate1(card.thruDate)">expired</span></span>
+                                                <span class="end-date" class="text-light">{{card.thruDate.slice(2,7)}}</span> 
+                                                <!-- <span class="text-shadow" style="color: white; font-weight: bold; background-color: red; padding: 2px;" v-show="dateNow > newDate1(card.thruDate)">expired</span> -->
                                             </div>
                                             <div class="card-holder" class="text-light">{{card.cardHolder}}</div>
                                             <div class="master">

@@ -62,6 +62,9 @@ public class AccountController {
             if (!client.getAccounts().contains(account)){
                 return new ResponseEntity<>("The account isn't yours.", HttpStatus.FORBIDDEN);
             }
+            if (client.getAccounts().toArray().length == 1){
+                return new ResponseEntity<>("You can't deleted all your accounts", HttpStatus.FORBIDDEN);
+            }
             if (account.getBalance() > 0){
                 return new ResponseEntity<>("You can't deleted a account with money.", HttpStatus.FORBIDDEN);
             }

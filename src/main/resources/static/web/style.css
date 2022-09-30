@@ -10,10 +10,6 @@ body {
 
 /*<----------------------- EMPIEZA EL NAV -------------------------> */
 
-.logo {
-    width: 14rem;
-}
-
 .enlaceNav {
     text-decoration: none;
     color: #614ad9;
@@ -36,6 +32,10 @@ body {
     color: white;
     background-color: #614ad9;
     transition: 0.5s;
+}
+
+.logo{
+  width: 14rem;
 }
 
 /*<----------------------- TERMINA EL NAV -------------------------> */

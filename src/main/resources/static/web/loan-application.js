@@ -83,7 +83,7 @@ createApp({
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, aplly loan!',
+                confirmButtonText: 'Yes, aply loan!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             }).then((result) => {

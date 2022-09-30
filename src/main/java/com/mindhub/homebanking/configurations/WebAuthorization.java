@@ -20,9 +20,9 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/web/index.html","/web/about-us.html" ,"/web/price.html","/web/index.js","/web/style.css","/web/singin1.html", "/web/singin1.css", "/web/app.js", "/web/create-cards.html","/web/style1.css").permitAll()
+                .antMatchers("/web/index.html","/web/about-us.html", "/web/segurity.html" ,"/web/price.html","/web/index.js","/web/style.css","/web/singin1.html", "/web/singin1.css", "/web/app.js", "/web/create-cards.html","/web/style1.css").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/clients").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/clients/current/accounts","/api/transactions/filter", "/api/clients/current/transactions/payments    ").hasAnyAuthority("CLIENT","ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/accounts","/api/transactions/filter", "/api/clients/current/transactions/payments ").hasAnyAuthority("CLIENT","ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/clients/current/accounts").hasAnyAuthority("CLIENT","ADMIN")
                 .antMatchers("/web/assets/**", "/web/login.html","/web/login.js","/web/,login.css").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/api/clients/current/cards","/api/clients/current/accounts").hasAnyAuthority("CLIENT", "ADMIN")
