@@ -71,7 +71,7 @@ createApp({
             }).then((result) => {
                 if (result.isConfirmed) {
                     accountTo = this.accountTo.toUpperCase()
-                    axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&numberAccountOrigin=${this.accountFrom}&numberAccountReceive=${accountTo}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+                    axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&numberAccountOrigin=${this.accountFrom}&numberAccountReceive=${accountTo}`)
                     .then(()=>
                     swalWithBootstrapButtons.fire(
                         'Great job!',

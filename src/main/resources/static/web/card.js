@@ -66,7 +66,7 @@ createApp({
             })
         },
         createCards(){
-            axios.post('/api/clients/current/cards',`cardColor=${this.cardColor}&cardType=${this.cardType}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+            axios.post('/api/clients/current/cards',`cardColor=${this.cardColor}&cardType=${this.cardType}`)
             .then (() =>Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -84,7 +84,7 @@ createApp({
                     }))
         },
         deletedCard(){
-            axios.patch('/api/clients/current/cards', `cardNumber=${this.cardNumber}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+            axios.patch('/api/clients/current/cards', `cardNumber=${this.cardNumber}`)
             .then (() =>Swal.fire({
                 position: 'center',
                 icon: 'success',
