@@ -18,7 +18,7 @@ createApp({
     },
     methods: {
       login(){
-        axios.post('/api/login', `email=${this.email}&password=${this.password}` ,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+        axios.post('/api/login', `email=${this.email}&password=${this.password}`)
         .then(()=> {
           window.location.href='/web/accounts.html'
         })
@@ -30,10 +30,9 @@ createApp({
           }))
       },
       singUp(){
-        axios.post('/api/clients',`firstName=${this.newName}&lastName=${this.newLastName}&email=${this.newEmail}&password=${this.newPassword}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+        axios.post('/api/clients',`firstName=${this.newName}&lastName=${this.newLastName}&email=${this.newEmail}&password=${this.newPassword}`)
         .then(()=>
-        axios.post('/api/login',`email=${this.newEmail}&password=${this.newPassword}`,{headers:{'content-type':'application/x-www-form-urlencoded'}}))
-        // .then(()=> axios.post('/api/clients/current/accounts', `email=${this.newEmail}`,{headers:{'content-type':'application/x-www-form-urlencoded'}}))
+        axios.post('/api/login',`email=${this.newEmail}&password=${this.newPassword}`))
         .then (() =>Swal.fire({
           position: 'center',
           icon: 'success',
